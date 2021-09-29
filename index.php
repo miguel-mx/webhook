@@ -40,4 +40,19 @@ if($data) {
         print_r($result);
         file_put_contents('./payload.log', $result, FILE_APPEND);
     }
+
+    if ($data['repository']['name'] == '10aniversario') {
+        echo 'From 10 aniversario'; // + $data['repository']['name'];
+
+        // Run git pull
+        $url = 'http://matmor.unam.mx/10-aniversario/gitpull.php';
+
+        $ch = curl_init($url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        print_r($result);
+        file_put_contents('./payload.log', $result, FILE_APPEND);
+    }
 }
